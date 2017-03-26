@@ -1,0 +1,268 @@
+<!doctype html>
+<!--
+Material Design Lite
+Copyright 2015 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>BUILD | GRIMPS</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">-->
+
+    <link rel="stylesheet" href="public/css/material.min.css" />
+    <link rel="stylesheet" href="public/css/styles.css">
+    <link rel="stylesheet" href="public/css/grimps.css">
+    <style>
+    #view-source {
+        position: fixed;
+        display: block;
+        right: 0;
+        bottom: 0;
+        margin-right: 40px;
+        margin-bottom: 40px;
+        z-index: 900;
+    }
+    </style>
+    <style type="text/css" media="screen">
+        html, body {
+            margin: 0px;
+            padding: 0px;
+            height: 100%;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="grimps-white grimps-text-alcu demo-header mdl-layout__header mdl-color-text--grey-600">
+            <div class="mdl-layout__header-row">
+                <div class="grimps-text-title"><i class="material-icons mdl-badge">create</i> ADD SCHEDULE</div>
+                <div class="mdl-layout-spacer"></div>
+                <!-- Left aligned menu below button -->
+                <div id="notif" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style="margin-right: 30px">
+                    notifications
+                </div>
+                <ul class="grimps-text-lato mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="notif">
+                    <li class="mdl-menu__item"><img src="images/graduate.jpg"><span>Sidang 13514068 has been moved.</span></li>
+                    <li class="mdl-menu__item"><img src="images/graduate.jpg"><span>You get <b>3</b> new verification requests</span></li>
+                </ul>
+                <div class="grimps-text-title">GRIMPS</div>
+            </div>
+        </header>
+        <div class="grimps-blue demo-drawer mdl-layout__drawer mdl-color-text--blue-grey-50">
+            <header class="demo-drawer-header grimps-text-plain">
+                <div class="user-info">
+                    <img src="images/user.jpg" class="demo-avatar">
+                    <div>
+                        <span class="grimps-text-lato grimps-text-big">Hillary</span><br>
+                        <span>Admin</span>
+                    </div>
+                </div>
+                <div class="demo-avatar-dropdown">
+                    <div class="mdl-layout-spacer"></div>
+                    <span class="email" title="hillary@example.com">hillary@example.com</span>
+                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons" role="presentation">arrow_drop_down</i>
+                        <span class="visuallyhidden">Accounts</span>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+<!--                        <li class="mdl-menu__item">Profile</li>-->
+                        <li class="mdl-menu__item" onclick="window.location='index.html'">Logout</li>
+                    </ul>
+                </div>
+                <hr>
+            </header>
+            <nav class="grimps-text-alcu grimps-text-title demo-navigation mdl-navigation">
+                <a class="mdl-navigation__link grimps-text-plain grimps-selected" href="tu-add.html"><i class="material-icons">create</i>ADD</a>
+                <a class="mdl-navigation__link grimps-text-plain" href="tu-calendar.html"><i class="material-icons">alarm</i>CALENDAR</a>
+                <a class="mdl-navigation__link grimps-text-plain" href="tu-verifikasi.html"><i class="material-icons">assignment</i>VERIFICATION</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content grimps-plain">
+          <div class="grimps-header grimps-violet verification-header grimps-text-lato">
+              <div class="grimps-text-plain grimps-text-big">ADD A DEFENSE SCHEDULE</div>
+          </div>
+          <div class="mdl-grid mdl-grid--no-spacing">
+              <div id="p2" class="mdl-progress mdl-js-progress mdl-progress__indeterminate" style="margin: 0 auto; width: 100%"></div>
+              <div class="mdl-cell mdl-cell--3-col">
+                  <!--- Nothing -->
+              </div>
+              <div class="mdl-cell mdl-cell--6-col">
+                  <form action="#" style="padding: 30px 0">
+                      <table class="registration">
+                          <tr>
+                              <td><label style="font-size:17px" for="sample7">Student</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                      <select class="mdl-textfield__input" id="student" required onchange="fillDetails()">
+                                          <option></option>
+                                          <option value="Dessy">13514030 - Michelle</option>
+                                          <option value="Dessy">13514041 - Aurora</option>
+                                          <option value="Dessy">13514042 - Yohanes Ishamus</option>
+                                          <option value="Dessy">13514052 - Kitkat Pricilla</option>
+                                          <option value="Dessy">13514053 - Priska</option>
+                                          <option value="Dessy">13514054 - Moh. Yesus Gautama</option>
+                                          <option value="Dessy">13514068 - Garmastewira</option>
+                                          <option value="Ulfah">13514075 - Sumiah Barbara</option>
+                                          <option value="Masayu">13514080 - Jacqueline</option>
+                                          <option value="Rinaldi">13515100 - Munir</option>
+                                      </select>
+                                      <!--<input class="mdl-textfield__input" type="text" id="sample7">
+                                      <label class="mdl-textfield__label" for="sample7">Mention your supervisor 1</label>-->
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample1">Final Project</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                      <input class="mdl-textfield__input" type="text" id="final-project">
+                                      <label class="mdl-textfield__label" for="sample1"><span id="final-project-span"></span></label>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample1">Topic</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                      <input class="mdl-textfield__input" type="text" id="topic">
+                                      <label class="mdl-textfield__label" for="sample1"><span id="topic-span"></span></label>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample1">Supervisor</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                      <input class="mdl-textfield__input" type="text" id="supervisor">
+                                      <label class="mdl-textfield__label" for="sample1"><span id="supervisor-span"></span></label>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample7">Examiner 1</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                    <select class="mdl-textfield__input" id="examiner1" required>
+                                        <option value="Dessy">Dessy Puji - 0 - GAIB</option>
+                                        <option value="Ulfah">Nur Ulfah M - 2 - GAIB</option>
+                                        <option value="Masayu">Masayu - 1 - GAIB</option>
+                                        <option value="Inge">Inggriani - 1 - Programming</option>
+                                        <option value="Yudhis">Yudhis - 2 - Programming</option>
+                                    </select>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample8">Examiner 2</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                    <select class="mdl-textfield__input" id="examiner2" required>
+                                        <option value="Dessy">Dessy Puji - 0 - GAIB</option>
+                                        <option value="Ulfah">Nur Ulfah M - 2 - GAIB</option>
+                                        <option value="Masayu">Masayu - 1 - GAIB</option>
+                                        <option value="Inge">Inggriani - 1 - Programming</option>
+                                        <option value="Yudhis">Yudhis - 2 - Programming</option>
+                                    </select>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                              <td><label style="font-size:17px" for="sample8">Examiner 3</label></td>
+                              <td>
+                                  <div class="mdl-textfield mdl-js-textfield">
+                                    <select class="mdl-textfield__input" id="examiner3" required>
+                                        <option value="Dessy">Dessy Puji - 0 - GAIB</option>
+                                        <option value="Ulfah">Nur Ulfah M - 2 - GAIB</option>
+                                        <option value="Masayu">Masayu - 1 - GAIB</option>
+                                        <option value="Inge">Inggriani - 1 - Programming</option>
+                                        <option value="Yudhis">Yudhis - 2 - Programming</option>
+                                    </select>
+                                  </div>
+                              </td>
+                          </tr>
+                          <tr>
+                            <td></td>
+                            <td><a href="#" onclick="assignExaminers()">Assign Examiners Automatically</a></td>
+                          </tr>
+                      </table>
+                      <div style="text-align: right; margin-top: 30px">
+                          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored grimps-violet show-modal">
+                              SUBMIT
+                          </button>
+                      </div>
+                  </form>
+                  <div class="mdl-layout-spacer"></div>
+                  <div class="verification-submit">
+
+                      <dialog class="mdl-dialog">
+                          <h4 class="mdl-dialog__title">Continue?</h4>
+                          <div class="mdl-dialog__content">
+                              <p>
+                                  Make sure you have entered data correctly.
+                              </p>
+                          </div>
+                          <div class="mdl-dialog__actions">
+                              <button type="button" class="mdl-button" onclick="loading();t">Continue</button>
+                              <button type="button" class="mdl-button close">Cancel</button>
+                          </div>
+                      </dialog>
+                      <script>
+                      var dialog = document.querySelector('dialog');
+                      var showModalButton = document.querySelector('.show-modal');
+                      if (! dialog.showModal) {
+                          dialogPolyfill.registerDialog(dialog);
+                      }
+                      showModalButton.addEventListener('click', function() {
+                          dialog.showModal();
+                      });
+                      dialog.querySelector('.close').addEventListener('click', function() {
+                          dialog.close();
+                      });
+                      </script>
+                      <script src="public/js/jquery.min.js"></script>
+                      <script src="public/js/material.min.js"></script>
+                  </div>
+              </div>
+            </div>
+        </main>
+    </div>
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/material.min.js"></script>
+    <script src="public/js/add-schedule.js"></script>
+</body>
+</html>

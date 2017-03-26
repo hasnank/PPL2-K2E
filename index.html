@@ -1,0 +1,149 @@
+
+<!doctype html>
+<!--
+Material Design Lite
+Copyright 2015 Google Inc. All rights reserved.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+https://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>GRIMPS</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+-->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="public/css/material.min.css" />
+<link rel="stylesheet" href="public/css/styles.css">
+<link rel="stylesheet" href="public/css/grimps.css">
+<style>
+#view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+}
+    
+html { 
+  background: url(images/bg.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+</style>
+</head>
+<body class="first-body">
+    <div class="first-container mdl-grid mdl-grid--no-spacing">
+        <div class="mdl-cell--12-col-desktop">
+<!--
+            <div class="grimps-header grimps-violet verification-header grimps-text-lato">
+                <div class="header-title grimps-text-plain grimps-text-big">WELCOME</div>
+            </div>
+-->
+                <br/>
+                <br/>
+                <div class="logo-first-page">
+                    <img  src='images/logo2.png' alt='GRIMPS'>
+                    <h1 class="grimps-text-alcu">GRIMPS</h1>
+                    
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <center>
+                <p style="font-size:17px">Aplikasi Penjadwalan Sidang</p>
+                </center>
+                <main class="login-buttons">
+                    <div class="mdl-grid mdl-grid--no-spacing">
+                <div class="mdl-cell mdl-cell--3-col">
+                    <!--- Nothing -->
+                </div>
+                <div class="mdl-cell mdl-cell--6-col">
+                    <form>
+                        <center class=" grimps-plain login-form">
+                            <div class="error">
+                            <span class="error-span">Wrong ID or Password</span></div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="text" id="id">
+                                <label class="mdl-textfield__label" for="id">Insert your Student/Employee ID...</label>
+                            </div>
+                            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                <input class="mdl-textfield__input" type="password" id="pw">
+                                <label class="mdl-textfield__label" style="" for="pw">Insert your Password...</label>
+                            </div>
+                            <div style="text-align: center; margin-top: 10px; margin-bottom: -40px;">
+                                <button type="submit" onclick="return hai()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored grimps-violet show-modal">
+                                    LOGIN
+                                </button>
+                            </div>
+                        </center>
+                    </form>
+                    <!--REGISTER-->
+                    <center>
+                    <a class="reg" href = "mhs-registration.html">Student Register</a>
+                    </center>
+                </div>
+
+            </div>
+                </main>
+<!--
+                <SCRIPT>
+                function register() {
+                	document.getElementById("register").innerHTML =
+					"<br/> <button onclick=\"window.location='mhs-registration.html'\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">"
+					  +"Student Registration"
+					+"</button><br/><br/>"
+					+"<button onclick=\"window.location='dsn-registration.html'\" class=\"mdl-button mdl-js-button mdl-button--raised mdl-button--colored\">"
+					  +"Lecturer Registration"
+					+"</button>";
+                }
+                </SCRIPT>
+-->
+                <script src="public/js/jquery.min.js"></script>
+                <script src="public/js/material.min.js"></script>
+                <script src="public/js/first-page.js"></script>
+                <script src="public/js/login.js"></script>
+        </div>
+    </div>
+</body>
+</html>

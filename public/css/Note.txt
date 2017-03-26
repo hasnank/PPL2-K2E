@@ -1,0 +1,5 @@
+Font: Alcubierre, Lato
+biru #03192f
+orange tua #d79a08
+orange muda #fef6e0
+biru muda ungu #8393ca

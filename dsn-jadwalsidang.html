@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>EXAMS | GRIMPS</title>
+
+    <!-- Add to homescreen for Chrome on Android -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="icon" sizes="192x192" href="images/android-desktop.png">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="apple-mobile-web-app-title" content="Material Design Lite">
+    <link rel="apple-touch-icon-precomposed" href="images/ios-desktop.png">
+
+    <!-- Tile icon for Win8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/touch/ms-touch-icon-144x144-precomposed.png">
+    <meta name="msapplication-TileColor" content="#3372DF">
+
+    <link rel="shortcut icon" href="images/favicon.png">
+
+    <!-- SEO: If your mobile URL is different from the desktop URL, add a canonical link to the desktop page https://developers.google.com/webmasters/smartphone-sites/feature-phones -->
+    <!--
+    <link rel="canonical" href="http://www.example.com/">
+-->
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="public/css/material.min.css" />
+<link rel="stylesheet" href="public/css/styles.css">
+<link rel="stylesheet" href="public/css/grimps.css">
+<style>
+#view-source {
+    position: fixed;
+    display: block;
+    right: 0;
+    bottom: 0;
+    margin-right: 40px;
+    margin-bottom: 40px;
+    z-index: 900;
+}
+</style>
+</head>
+<body>
+    <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+        <header class="grimps-white grimps-text-alcu demo-header mdl-layout__header mdl-color-text--grey-600">
+            <div class="mdl-layout__header-row">
+                <div class="grimps-text-title"><i class="material-icons">list</i> YOUR DEFENSE SCHEDULE</div>
+                <div class="mdl-layout-spacer"></div>
+                <!-- Left aligned menu below button -->
+                <div id="notif" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style="margin-right: 30px">
+                    notifications
+                </div>
+                <ul class="grimps-text-lato mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="notif">
+                    <li class="mdl-menu__item" onclick="window.location.href='dsn-notes.html'"><img src="images/graduate.jpg"><span>Hillary wants to change examination.</span></li>
+                    <li class="mdl-menu__item" onclick="window.location.href='dsn-notes.html'"><img src="images/graduate.jpg"><span>Your changes had been approved.</span></li>
+                </ul>
+                <div class="grimps-text-title">GRIMPS</div>
+            </div>
+        </header>
+        <div class="grimps-blue demo-drawer mdl-layout__drawer mdl-color-text--blue-grey-50">
+            <header class="demo-drawer-header grimps-text-plain">
+                <div class="user-info">
+                    <img src="images/user.jpg" class="demo-avatar">
+                    <div>
+                        <span class="grimps-text-lato grimps-text-big">Dessy P. L.</span><br>
+                        <span>Lecturer</span>
+                    </div>
+                </div>
+                <div class="demo-avatar-dropdown">
+                    <div class="mdl-layout-spacer"></div>
+                    <span class="email" title="dessy@example.com">dessy@example.com</span>
+                    <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                        <i class="material-icons" role="presentation">arrow_drop_down</i>
+                        <span class="visuallyhidden">Accounts</span>
+                    </button>
+                    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                        <li class="mdl-menu__item" onclick="window.location='dsn-profil.html'">Profile</li>
+                        <li class="mdl-menu__item" onclick="window.location='index.html'">Logout</li>
+                    </ul>
+                </div>
+                <hr>
+            </header>
+            <nav class="grimps-text-alcu grimps-text-title demo-navigation mdl-navigation">
+                <a class="mdl-navigation__link grimps-text-plain" href="dsn-isi-constraints.html"><i class="material-icons">av_timer</i>ASSIGN TIME</a>
+                <a class="mdl-navigation__link grimps-text-plain" href="dsn-calendar.html"><i class="material-icons">alarm</i>CALENDAR</a>
+                <a class="mdl-navigation__link grimps-text-plain grimps-selected" href="dsn-jadwalsidang.html"><i class="material-icons">list</i>DEFENSE SCHEDULE</a>
+                <a class="mdl-navigation__link grimps-text-plain" href="dsn-students.html"><i class="material-icons">person</i>STUDENTS</a>
+                <a class="mdl-navigation__link grimps-text-plain" href="dsn-notes.html"><i class="material-icons">content_paste</i>NOTES</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content grimps-plain">
+            <div class="exam-description-card-dsn mdl-grid mdl-grid--no-spacing">
+                <div class="exam-desc-cell-8 mdl-cell mdl-cell--8-col">
+                    <div class="date1">
+                        <div class="exam-date">
+                            <h3>OCTOBER, 19<sup>th</sup> 2016</h3>
+                        </div>
+                        <div class="exam-description">
+                            <table class="student-desc">
+                                <tr>
+                                    <td><h4>Student</h4></td>
+                                    <td>
+                                        <p class="center-desc" style="font-size: 18px; ">: Hillary Clinton - 13510911</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Topic</h4></td>
+                                    <td>
+                                        <p class="center-desc" style="font-size: 18px">: How to Win Election when You Have Deleted e-mails</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h4>Examiners:</h4>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    Dessy P. L.
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    Wikileaks
+                                    </span>
+                                </li>
+                            </ul>
+                            <h4>Supervisor:</h4>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    FBI
+                                    </span>
+                                </li>
+                            </ul>
+                            <h4>Time & Place:</h4>
+                            <p style="font-size: 18px"><b>Time</b>: 10.00 <br><b>Room</b>: 7602</p>
+                        </div>
+                    </div>
+                    <div class="date2 hidden">
+                        <div class="exam-date">
+                            <h3>OCTOBER, 21<sup>st</sup> 2016</h3>
+                        </div>
+                        <div class="exam-description">
+                            <table class="student-desc">
+                                <tr>
+                                    <td><h4>Student</h4></td>
+                                    <td>
+                                        <p class="center-desc" style="font-size: 18px; ">: Rangga - 13514068</p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td><h4>Topic</h4></td>
+                                    <td>
+                                        <p class="center-desc" style="font-size: 18px; ">: Implementasi Algo XXX</p>
+                                    </td>
+                                </tr>
+                            </table>
+                            <h4>Examiners:</h4>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    Dessy P. L.
+                                    </span>
+                                </li>
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    Drake
+                                    </span>
+                                </li>
+                            </ul>
+                            <h4>Supervisor:</h4>
+                            <ul class="demo-list-icon mdl-list">
+                                <li class="mdl-list__item">
+                                    <span class="mdl-list__item-primary-content">
+                                    <i class="material-icons mdl-list__item-icon">person</i>
+                                    Lil' Wayne
+                                    </span>
+                                </li>
+                            </ul>
+                            <h4>Time & Place:</h4>
+                            <p style="font-size: 18px"><b>Time</b>: 10.00 <br><b>Room</b>: 7602</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="exam-desc-cell-4 mdl-cell mdl-cell--4-col">
+                    <div class="exam-date-title grimps-text-alcu-big">
+                        YOUR DEFENSE LIST
+                    </div>
+                    <div class="demo-navigation mdl-navigation date-list">
+                        <a class="date1 mdl-navigation__link selected">OCT, 19th 2016 - 10.00</a>
+                        <a class="date1 mdl-navigation__link">OCT, 19th 2016 - 14.00</a>
+                        <a class="date1 mdl-navigation__link">OCT, 20th 2016 - 12.00</a>
+                        <a class="date2 mdl-navigation__link">OCT, 21st 2016 - 10.00</a>
+                        <a class="date2 mdl-navigation__link">NOV, 22nd 2016 - 13.00</a>
+                        <a class="date2 mdl-navigation__link">NOV, 25th 2016 - 10.00</a>
+                        <a class="date2 mdl-navigation__link">DEC, 1st 2016 - 13.00</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        var dialog = document.querySelector('dialog');
+        var showModalButton = document.querySelector('.show-modal');
+        if (! dialog.showModal) {
+            dialogPolyfill.registerDialog(dialog);
+        }
+        showModalButton.addEventListener('click', function() {
+            dialog.showModal();
+        });
+        dialog.querySelector('.close').addEventListener('click', function() {
+            dialog.close();
+        });
+    </script>
+    <script src="public/js/jquery.min.js"></script>
+    <script src="public/js/material.min.js"></script>
+    <script src="public/js/jadwalsidang.js"></script>
+</body>
+</html>
