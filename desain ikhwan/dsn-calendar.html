@@ -21,8 +21,7 @@ limitations under the License
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="A front-end template that helps you build fast, modern mobile web apps.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
-    <title>CALENDAR | GRIMPS</title>
-
+    <title>CALENDAR</title>
     <!-- Add to homescreen for Chrome on Android -->
     <meta name="mobile-web-app-capable" content="yes">
     <link rel="icon" sizes="192x192" href="images/android-desktop.png">
@@ -97,8 +96,11 @@ limitations under the License
             scheduler.config.full_day = true;
 
             scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-            scheduler.init('scheduler_here', new Date(2016, 10, 16), "month");
-            scheduler.load("./data/events2.xml", function() {
+            scheduler.init("scheduler_here",new Date(),"month");
+            scheduler.load("./data/personal.xml", function() {
+
+            });
+            scheduler.load("./data/myschedule.xml", function() {
 
             });
         }
@@ -108,7 +110,11 @@ limitations under the License
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <header class="grimps-white grimps-text-alcu demo-header mdl-layout__header mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
-                <div class="grimps-text-title"><i class="material-icons">date_range</i> CALENDAR</div>
+                <div class="grimps-text-title" style="margin-right: 50px"><i class="material-icons">date_range</i> CALENDAR</div>
+                <i class="material-icons">search</i>
+                <form id = "search" style="margin-left: 30px">
+                  <input style="height: 40px; width: 500px; border:0px" name="search" placeholder="Search calendars..."></form>
+                </form>
                 <div class="mdl-layout-spacer"></div>
                 <!-- Left aligned menu below button -->
                 <div id="notif" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style="margin-right: 30px">
@@ -118,7 +124,7 @@ limitations under the License
                     <li class="mdl-menu__item" onclick="window.location.href='dsn-notes.html'"><img src="images/graduate.jpg"><span>Hillary wants to change examination.</span></li>
                     <li class="mdl-menu__item" onclick="window.location.href='dsn-notes.html'"><img src="images/graduate.jpg"><span>Your changes had been approved.</span></li>
                 </ul>
-                <div class="grimps-text-title">GRIMPS</div>
+                <div class="grimps-text-title"></div>
             </div>
         </header>
         <div class="grimps-blue demo-drawer mdl-layout__drawer mdl-color-text--blue-grey-50">
@@ -158,8 +164,7 @@ limitations under the License
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
-                    document.getElementById("month").innerHTML = str;
-                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "day");
+                    document.getElementById("month").innerHTML = str;scheduler.init('scheduler_here',new Date(),"day");
                   }
                 </script>
 
@@ -175,7 +180,7 @@ limitations under the License
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
                     document.getElementById("month").innerHTML = str;
-                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "week");
+                    scheduler.init('scheduler_here',new Date(),"week");
                   }
                 </script>
 
@@ -191,7 +196,7 @@ limitations under the License
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
                     document.getElementById("month").innerHTML = str;
-                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "month");
+                    scheduler.init('scheduler_here',new Date(),"month");
                   }
                 </script>
               </div>
@@ -201,20 +206,16 @@ limitations under the License
                 <div class="grimps-text-view">Calendars</div>
                 <div class="grimps-text-calendar-option">
                   <p>
-                    <input type="checkbox" class="filled-in" id="Seminar KP" checked="unchecked" />
-                    <label for="filled-in-box">Seminar KP</label>
+                    <input type="checkbox" class="filled-in" id="Personal"/>
+                    <label for="filled-in-box">Personal</label>
                   </p>
                   <p>
-                    <input type="checkbox" class="filled-in" id="Seminar TA 1" checked="unchecked" />
-                    <label for="filled-in-box">Seminar TA 1</label>
+                    <input type="checkbox" class="filled-in" id="All Schedules"/>
+                    <label for="filled-in-box">All Schedules</label>
                   </p>
                   <p>
-                    <input type="checkbox" class="filled-in" id="Seminar TA 2" checked="unchecked" />
-                    <label for="filled-in-box">Seminar TA 2</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" class="filled-in" id="Sidang Akhir" checked="unchecked" />
-                    <label for="filled-in-box">Sidang Akhir</label>
+                    <input type="checkbox" class="filled-in" id="My Calendar"/>
+                    <label for="filled-in-box">My Calender</label>
                   </p>
                 </div>
               </div>
