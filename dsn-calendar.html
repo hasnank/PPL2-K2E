@@ -108,7 +108,7 @@ limitations under the License
     <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
         <header class="grimps-white grimps-text-alcu demo-header mdl-layout__header mdl-color-text--grey-600">
             <div class="mdl-layout__header-row">
-                <div class="grimps-text-title"><i class="material-icons mdl-badge">alarm</i> CALENDAR</div>
+                <div class="grimps-text-title"><i class="material-icons">date_range</i> CALENDAR</div>
                 <div class="mdl-layout-spacer"></div>
                 <!-- Left aligned menu below button -->
                 <div id="notif" class="material-icons mdl-badge mdl-badge--overlap" data-badge="2" style="margin-right: 30px">
@@ -145,28 +145,94 @@ limitations under the License
                 <hr>
             </header>
             <nav class="grimps-text-alcu grimps-text-title demo-navigation mdl-navigation">
-                <a class="mdl-navigation__link grimps-text-plain" href="dsn-isi-constraints.html"><i class="material-icons">av_timer</i>ASSIGN TIME</a>
-                <a class="mdl-navigation__link grimps-text-plain grimps-selected" href="dsn-calendar.html"><i class="material-icons">alarm</i>CALENDAR</a>
-                <a class="mdl-navigation__link grimps-text-plain" href="dsn-jadwalsidang.html"><i class="material-icons">list</i>DEFENSE SCHEDULE</a>
-                <a class="mdl-navigation__link grimps-text-plain" href="dsn-students.html"><i class="material-icons">person</i>STUDENTS</a>
-                <a class="mdl-navigation__link grimps-text-plain" href="dsn-notes.html"><i class="material-icons">content_paste</i>NOTES</a>
+              <div id="view">
+                <div class="grimps-text-view">View</div>
+                <!--Tampilan day-->
+                <div id = "day">
+                  <div class="mdl-navigation__link grimps-text-plain" onclick="dayview()"><i class="material-icons">view_day</i>Day</div>
+                </div>
+                <script>
+                  function dayview() {
+                    var str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"dayview()\"><i class=\"material-icons\">view_day</i>Day</div>";
+                    document.getElementById("day").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
+                    document.getElementById("week").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
+                    document.getElementById("month").innerHTML = str;
+                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "day");
+                  }
+                </script>
+
+                <!--Tampilan week-->
+                <div id = "week">
+                  <div class="mdl-navigation__link grimps-text-plain" onclick="weekview()"><i class="material-icons">view_week</i>Week</div>
+                </div>
+                <script>
+                  function weekview() {
+                    var str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"dayview()\"><i class=\"material-icons\">view_day</i>Day</div>";
+                    document.getElementById("day").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
+                    document.getElementById("week").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
+                    document.getElementById("month").innerHTML = str;
+                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "week");
+                  }
+                </script>
+
+                <!--Tampilan month-->
+                <div id = "month">
+                  <div class="mdl-navigation__link grimps-text-plain grimps-selected" onclick="monthview()"><i class="material-icons">view_module</i>Month</div>
+                </div>
+                <script>
+                  function monthview() {
+                    var str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"dayview()\"><i class=\"material-icons\">view_day</i>Day</div>";
+                    document.getElementById("day").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
+                    document.getElementById("week").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
+                    document.getElementById("month").innerHTML = str;
+                    scheduler.init('scheduler_here', new Date(2016, 10, 16), "month");
+                  }
+                </script>
+              </div>
+              <!--Checkbox calendar used-->
+              <div id = "calendar-option">
+              <br>
+                <div class="grimps-text-view">Calendars</div>
+                <div class="grimps-text-calendar-option">
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Seminar KP" checked="unchecked" />
+                    <label for="filled-in-box">Seminar KP</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Seminar TA 1" checked="unchecked" />
+                    <label for="filled-in-box">Seminar TA 1</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Seminar TA 2" checked="unchecked" />
+                    <label for="filled-in-box">Seminar TA 2</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Sidang Akhir" checked="unchecked" />
+                    <label for="filled-in-box">Sidang Akhir</label>
+                  </p>
+                </div>
+              </div>
             </nav>
         </div>
         <main class="mdl-layout__content grimps-plain">
             <div class="mdl-grid mdl-grid--no-spacing">
                 <div class="mdl-cell mdl-cell--9-col grimps-plain">
-                    <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
-                    	<div class="dhx_cal_navline">
-                    		<div class="dhx_cal_prev_button">&nbsp;</div>
-                    		<div class="dhx_cal_next_button">&nbsp;</div>
-                    		<div class="dhx_cal_today_button"></div>
-                    		<div class="dhx_cal_date"></div>
-                    	</div>
-                    	<div class="dhx_cal_header">
-                    	</div>
-                    	<div class="dhx_cal_data">
-                    	</div>
-                    </div>
+                   <div id="scheduler_here" class="dhx_cal_container" style='width:100%; height:100%;'>
+                      <div class="dhx_cal_navline">
+                          <div class="dhx_cal_prev_button">&nbsp;</div>
+                          <div class="dhx_cal_next_button">&nbsp;</div>
+                          <div class="dhx_cal_today_button"></div>
+                          <div class="dhx_cal_date"></div>
+                      </div>
+                      <div class="dhx_cal_header"></div>
+                      <div class="dhx_cal_data"></div>       
+                  </div>
                 </div>
                 <div class="mdl-cell mdl-cell--3-col grimps-white">
                     <div class="mdl-tabs mdl-js-tabs mdl-js-ripple-effect">
@@ -187,19 +253,19 @@ limitations under the License
                                   <tbody>
                                     <tr>
                                       <td>07.00</td>
-                                      <td class="mdl-data-table__cell--non-numeric">Implementasi Algo XXX @7602</td>
+                                      <td class="mdl-data-table__cell--non-numeric">Sidang Mahasiswa XXX</td>
                                     </tr>
                                     <tr>
                                       <td>08.00</td>
-                                      <td class="mdl-data-table__cell--non-numeric">Implementasi Algo XXX @7602</td>
+                                      <td class="mdl-data-table__cell--non-numeric">Sidang Mahasiswa YYY</td>
                                     </tr>
                                     <tr>
                                       <td>09.00</td>
-                                      <td class="mdl-data-table__cell--non-numeric">Implementasi Algo YYY @7602</td>
+                                      <td class="mdl-data-table__cell--non-numeric">Sidang Mahasiswa ZZZ</td>
                                     </tr>
                                     <tr>
                                       <td>10.00</td>
-                                      <td class="mdl-data-table__cell--non-numeric">Implementasi Algo YYY @7602</td>
+                                      <td class="mdl-data-table__cell--non-numeric"></td>
                                     </tr>
                                     <tr>
                                       <td>11.00</td>

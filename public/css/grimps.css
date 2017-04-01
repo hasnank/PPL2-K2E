@@ -102,11 +102,11 @@
  TEXT/FONTS
 ****************************/
 .grimps-text-alcu {
-    font-family: "Alcubierre";
+    font-family: "Lato";
 }
 
 .grimps-text-alcu-big {
-    font-family: "Alcubierre";
+    font-family: "Lato";
     font-size: 24px;
 }
 
@@ -128,6 +128,13 @@
     font-size: 32px !important;
 }
 
+.grimps-text-view {
+    vertical-align: middle;
+    font-size: 20px !important;
+    margin-left: 40px;
+    padding: 10px;
+}
+
 .grimps-text-plain {
     color: #FEF6E2 !important;
 }
@@ -140,6 +147,9 @@
     color: red !important;
 }
 
+.grimps-text-calendar-option {
+    margin-left: 40px;
+}
 /****************************
  END OF TEXT-FONTS
 ****************************/
@@ -148,7 +158,7 @@
  DASHBOARD
 ****************************/
 .mdl-navigation__link {
-    font-size: 24px;
+    font-size: 20px;
 }
 
 hr {
