@@ -1,4 +1,4 @@
 <data>
-<event id='1261150553' start_date='2017-04-11 14:00' end_date='2017-04-11 16:00' text='Seminar KP 13514052 Naufal Malik Rabbani [Desy Puji]' />
-<event id='1261150556' start_date='2017-04-25 07:00' end_date='2017-04-25 11:00' text='Seminar TA 2 13514020 Ikhwanul Muslimin [Desy Puji]' />
+<event type='my_schedule' id='1261150553' start_date='2017-04-11 14:00' end_date='2017-04-11 16:00' text='Seminar KP 13514052 Naufal Malik Rabbani [Desy Puji]' />
+<event type='my_schedule' id='1261150556' start_date='2017-04-25 07:00' end_date='2017-04-25 11:00' text='Seminar TA 2 13514020 Ikhwanul Muslimin [Desy Puji]' />
 </data>

@@ -60,6 +60,9 @@ limitations under the License
     <link rel="stylesheet" href="public/css/dhtmlxscheduler_flat.css" type="text/css" media="screen" title="no title" charset="utf-8">
     <script src="public/js/dhtmlxscheduler_editors.js" type="text/javascript" charset="utf-8"></script>
     <script src="public/js/dhtmlxscheduler_minical.js" type="text/javascript" charset="utf-8"></script>
+	<script src="public/js/dhtmlxscheduler_agenda_view.js" ></script>
+    <script src="public/js/loadcalendar.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery.min.js"></script>
     <style type="text/css" media="screen">
         html, body {
             margin: 0px;
@@ -69,13 +72,59 @@ limitations under the License
         }
     </style>
     <script type="text/javascript" charset="utf-8">
+         /*function readText(filePath) {
+          var reader = new FileReader();
+          var output = ""; //placeholder for text output
+          if(filePath.files && filePath.files[0]) {           
+              reader.onload = function (e) {
+                  output = e.target.result;
+                  displayContents(output);
+            };//end onload()
+              reader.readAsText(filePath.files[0]);
+            }//end if html5 filelist support
+            return output;
+          }*/
+
         function init() {
             scheduler.config.multi_day = true;
-            var pizza_size = [
-                { key: 1, label: 'Small' },
-                { key: 2, label: 'Medium' },
-                { key: 3, label: 'Large' }
+            var types = [
+              { key: "personal", label: "Personal" },
+              { key: "all_schedules", label: "All_schedules" },
+              { key: "myschedule", label: "Myschedule" }
             ];
+
+            // default values for filters
+            var filters = {
+              personal: true,
+              all_schedules: true,
+              myschedule: true
+            };
+
+            var filter_inputs = document.getElementById("calendar-option").getElementsByTagName("input");
+            for (var i=0; i<filter_inputs.length; i++) {
+              var filter_input = filter_inputs[i];
+
+              // set initial input value based on filters settings
+              filter_input.checked = filters[filter_input.name];
+
+              // attach event handler to update filters object and refresh view (so filters will be applied)
+              filter_input.onchange = function() {
+                filters[this.name] = !!this.checked;
+                scheduler.updateView();
+              }
+            }
+
+            // here we are using single function for all filters but we can have different logic for each view
+            scheduler.filter_month = scheduler.filter_day = scheduler.filter_week = function(id, event) {
+              // display event only if its type is set to true in filters obj
+              // or it was not defined yet - for newly created event
+              if (filters[event.type] || event.type==scheduler.undefined) {
+                return true;
+              }
+
+              // default, do not display event
+              return false;
+            };
 
             scheduler.locale.labels.section_text = 'Text';
             scheduler.locale.labels.section_checkbox = 'Checkbox';
@@ -85,11 +134,7 @@ limitations under the License
 
             scheduler.config.lightbox.sections = [
                 { name: "text", height: 50, map_to: "text", type: "textarea", focus: true },
-                { name: "checkbox", map_to: "single_checkbox", type: "checkbox", checked_value: "registrable", unchecked_value: "unchecked" },
-                { name: "radiobutton", height: 58, options: pizza_size, map_to: "radiobutton_option", type: "radio", vertical: true },
-                { name: "select", height: 21, map_to: "type", type: "select", options: pizza_size },
-                { name: "template", height: 21, map_to: "text", type: "template" },
-                { name: "time", height: 72, type: "calendar_time", map_to: "auto" },
+                { name:"type", height:23, type:"select", options: types, default_value: "appointment", map_to:"type" },
                 { name: "time", height: 72, type: "time", map_to: "auto"}
             ];
 
@@ -103,6 +148,19 @@ limitations under the License
             scheduler.load("./data/myschedule.xml", function() {
 
             });
+			
+			
+			
+            /*window.alert(readFile("./data/personal.xml"));
+            scheduler.parse(readFile("./data/personal.xml"));
+            scheduler.parse(readFile("./data/all_schedules.xml"));
+            scheduler.parse(readFile("./data/myschedule.xml"));  */
+            scheduler.parse([
+              { start_date: "2017-04-30 12:00", end_date: "2017-04-30 20:00", text:"Appointment A-48865", type: "personal" },
+              { start_date: "2017-04-01 14:00", end_date: "2017-04-01 16:00", text:"Task T-44864", type: "myschedule" },
+              { start_date: "2017-04-02 16:30", end_date: "2017-04-02 18:00", text:"Training T-46558", type: "all_schedules" },
+              { start_date: "2017-04-03 18:30", end_date: "2017-04-03 20:00", text:"Appointment A-45564", type: "personal" }
+            ],"json");       
         }
     </script>
 </head>
@@ -132,13 +190,13 @@ limitations under the License
                 <div class="user-info">
                     <img src="images/user.jpg" class="demo-avatar">
                     <div>
-                        <span class="grimps-text-lato grimps-text-big">Dessy P. L.</span><br>
+                        <span class="grimps-text-lato grimps-text-big">Yudistira Asnar</span><br>
                         <span>Lecturer</span>
                     </div>
                 </div>
                 <div class="demo-avatar-dropdown">
                     <div class="mdl-layout-spacer"></div>
-                    <span class="email" title="dessy@example.com">dessy@example.com</span>
+                    <span class="email" title="yudis@informatika.org">yudis@informatika.org</span>
                     <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
                         <i class="material-icons" role="presentation">arrow_drop_down</i>
                         <span class="visuallyhidden">Accounts</span>
@@ -164,7 +222,10 @@ limitations under the License
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
-                    document.getElementById("month").innerHTML = str;scheduler.init('scheduler_here',new Date(),"day");
+                    document.getElementById("month").innerHTML = str;
+					str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"listview()\"\><i class=\"material-icons\">view_list</i>List</div>";
+                    document.getElementById("list").innerHTML = str;
+                    scheduler.init('scheduler_here',new Date(),"day");
                   }
                 </script>
 
@@ -180,6 +241,8 @@ limitations under the License
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
                     document.getElementById("month").innerHTML = str;
+					str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"listview()\"\><i class=\"material-icons\">view_list</i>List</div>";
+                    document.getElementById("list").innerHTML = str;
                     scheduler.init('scheduler_here',new Date(),"week");
                   }
                 </script>
@@ -196,9 +259,30 @@ limitations under the License
                     document.getElementById("week").innerHTML = str;
                     str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
                     document.getElementById("month").innerHTML = str;
+					str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"listview()\"\><i class=\"material-icons\">view_list</i>List</div>";
+                    document.getElementById("list").innerHTML = str;
                     scheduler.init('scheduler_here',new Date(),"month");
                   }
                 </script>
+				
+				<!--Tampilan list-->
+                <div id = "list">
+                  <div class="mdl-navigation__link grimps-text-plain" onclick="listview()"><i class="material-icons">view_list</i>List</div>
+                </div>
+                <script>
+                  function listview() {
+                    var str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"dayview()\"><i class=\"material-icons\">view_day</i>Day</div>";
+                    document.getElementById("day").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"weekview()\"><i class=\"material-icons\">view_week</i>Week</div>";
+                    document.getElementById("week").innerHTML = str;
+                    str = "<div class=\"mdl-navigation__link grimps-text-plain\" onclick=\"monthview()\"><i class=\"material-icons\">view_module</i>Month</div>";
+                    document.getElementById("month").innerHTML = str;
+					str = "<div class=\"mdl-navigation__link grimps-text-plain grimps-selected\" onclick=\"listview()\"\><i class=\"material-icons\">view_list</i>List</div>";
+                    document.getElementById("list").innerHTML = str;
+                    
+                  }
+                </script>
+				
               </div>
               <!--Checkbox calendar used-->
               <div id = "calendar-option">
@@ -206,19 +290,67 @@ limitations under the License
                 <div class="grimps-text-view">Calendars</div>
                 <div class="grimps-text-calendar-option">
                   <p>
-                    <input type="checkbox" class="filled-in" id="Personal"/>
+                    <input type="checkbox" class="filled-in" id="Seminar KP"/>
+                    <label for="filled-in-box">Seminar KP</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Seminar TA I"/>
+                    <label for="filled-in-box">Seminar TA I</label>
+                  </p>
+                  <p>
+                    <input type="checkbox" class="filled-in" id="Seminar TA II"/>
+                    <label for="filled-in-box">Seminar TA II</label>
+                  </p>
+				  <p>
+                    <input type="checkbox" class="filled-in" id="Sidang TA"/>
+                    <label for="filled-in-box">Sidang TA</label>
+                    <input type="checkbox" onchange="calenderfilter()" name = "personal" class="filled-in" id="personal"/>
                     <label for="filled-in-box">Personal</label>
                   </p>
                   <p>
-                    <input type="checkbox" class="filled-in" id="All Schedules"/>
+                    <input type="checkbox" onchange="calenderfilter()" name = "all_schedules"  class="filled-in" id="all_schedules"/>
                     <label for="filled-in-box">All Schedules</label>
                   </p>
                   <p>
-                    <input type="checkbox" class="filled-in" id="My Calendar"/>
-                    <label for="filled-in-box">My Calender</label>
+                    <input type="checkbox" onchange="calenderfilter()" name = "myschedule"  class="filled-in" id="myschedule"/>
+                    <label for="filled-in-box">My Schedule</label>
                   </p>
                 </div>
               </div>
+              <!--<script type="text/javascript">
+              $(document).ready(function(){
+                $('input[id="personal"]').click(function(){
+                    if($(this).is(":checked")){
+                        scheduler.load("./data/personal.xml", function() {
+                      });
+                    }
+                    else if($(this).is(":not(:checked)")){
+
+                    }
+                });
+                
+                $('input[id="all_schedules"]').click(function(){
+                    if($(this).is(":checked")){
+                        scheduler.load("./data/all_schedules.xml", function() {
+                      });
+                    }
+                    else if($(this).is(":not(:checked)")){
+                      
+                    }
+                });
+                
+                $('input[id="myschedule"]').click(function(){
+                    if($(this).is(":checked")){
+                        scheduler.load("./data/myschedule.xml", function() {
+                      });
+                    }
+                     else if($(this).is(":not(:checked)")){
+                      
+                    }
+                });
+            });
+
+              </script>-->
             </nav>
         </div>
         <main class="mdl-layout__content grimps-plain">
@@ -300,7 +432,7 @@ limitations under the License
                                   <div class="mdl-list__item">
                                     <span class="mdl-list__item-primary-content">
                                       <i class="material-icons">person</i>
-                                      <span class="mdl-list grimps-text-lato grimps-text-medium grimps-text-black">  Dessy</span>
+                                      <span class="mdl-list grimps-text-lato grimps-text-medium grimps-text-black">  Yudis</span>
                                     </span>
                                     <a title="Dosen Penguji" class="grimps-text-gold" href="#"><i class="material-icons">star</i></a>
                                   </div>
