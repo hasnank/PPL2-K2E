@@ -60,32 +60,28 @@ myjson["data"] ||= []
 tempjson = {}
 id = 0
 puts "No upcoming events found" if response.items.empty?
+str = "["
+puts response.items.size
 response.items.each do |event|
-  id = id + 1
-  tempjson["id"] ||= {}
-  tempjson["id"] = id
-  tempjson["text"] ||= {}
-  tempjson["text"] = "#{event.summary}"
+  str = str + "{ text:"+"\"#{event.summary}\","
+  startDate = Date.strptime("#{event.start.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %T")
+  endDate = Date.strptime("#{event.end.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %T")
 
-  startDate = Date.strptime("#{event.start.date_time}", '%FT%T%:z').strftime("%m-%d-%Y %T")
-  endDate = Date.strptime("#{event.end.date_time}", '%FT%T%:z').strftime("%m-%d-%Y %T")
-
-  tempjson["start_date"] ||= {}
-  tempjson["start_date"] = startDate
-  tempjson["end_date"] ||= {}
-  tempjson["end_date"] = endDate
-  myjson["data"] << tempjson.clone
-  puts JSON.dump(tempjson)
-  puts "*****************************"
-  puts JSON.dump(myjson)
-  puts "*****************************"
+  str = str + "start_date :"+"\""+startDate+"\","
+  str = str + "end_date :"+"\""+endDate +"\""
+  if id == (response.items.size - 1) then
+    str = str + "}"
+  else
+    str = str + "},"
+  end
+  id = id+1
 end
+str = str + "]"
 
 puts "============================="
 puts "============================="
 puts "============================="
-puts JSON.dump(myjson)
-File.open("jadwal.json", 'w') {
- |file| file.write( JSON.dump(myjson)) 
+File.open("./desain ikhwan/data/jadwal.json", 'w') {
+ |file| file.write(str) 
 }
 

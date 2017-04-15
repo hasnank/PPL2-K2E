@@ -84,6 +84,23 @@ limitations under the License
             }//end if html5 filelist support
             return output;
           }*/
+        function readTextFile(file)
+        {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file , false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                        return allText;
+                    }
+                }
+            }
+            rawFile.send(null);
+        }
 
         function init() {
             scheduler.config.multi_day = true;
@@ -143,24 +160,17 @@ limitations under the License
             scheduler.config.xml_date = "%Y-%m-%d %H:%i";
             scheduler.init("scheduler_here",new Date(),"month");
             scheduler.load("./data/personal.xml", function() {
-
             });
-            scheduler.load("./data/myschedule.xml", function() {
-
-            });
+            scheduler.load("./data/jadwal.json", "json");
 			
 			
 			
             /*window.alert(readFile("./data/personal.xml"));
             scheduler.parse(readFile("./data/personal.xml"));
             scheduler.parse(readFile("./data/all_schedules.xml"));
-            scheduler.parse(readFile("./data/myschedule.xml"));  */
-            scheduler.parse([
-              { start_date: "2017-04-30 12:00", end_date: "2017-04-30 20:00", text:"Appointment A-48865", type: "personal" },
-              { start_date: "2017-04-01 14:00", end_date: "2017-04-01 16:00", text:"Task T-44864", type: "myschedule" },
-              { start_date: "2017-04-02 16:30", end_date: "2017-04-02 18:00", text:"Training T-46558", type: "all_schedules" },
-              { start_date: "2017-04-03 18:30", end_date: "2017-04-03 20:00", text:"Appointment A-45564", type: "personal" }
-            ],"json");       
+            scheduler.parse(readFile("./data/myschedule.xml"));*/
+            scheduler.parse(readTextFile("./data/jadwal.json"),"json");
+
         }
     </script>
 </head>
