@@ -47,19 +47,19 @@ service.client_options.application_name = APPLICATION_NAME
 service.authorization = authorize
 
 # Fetch the next 10 events for the user
-calendar_id = 'ikhwan.m1996@gmail.com'
-calendar_id1 = 'kajianrutinyts@gmail.com'
+calendar_id = Array.new
+calendar_id.push('ikhwan.m1996@gmail.com')
+calendar_id.push('kajianrutinyts@gmail.com')
+calendar_id.push('uj9fkbmtchn5aucaj4b23ptv7s@group.calendar.google.com')
+
 response = Array.new
-response.push(service.list_events(calendar_id,
-                               max_results: 20,
-                               single_events: true,
-                               order_by: 'startTime',
-                               time_min: Time.now.iso8601))
-response.push(service.list_events(calendar_id1,
-                               max_results: 20,
-                               single_events: true,
-                               order_by: 'startTime',
-                               time_min: Time.now.iso8601))
+calendar_id.each do |calendarid|
+  response.push(service.list_events(calendarid,
+                                 max_results: 20,
+                                 single_events: true,
+                                 order_by: 'startTime',
+                                 time_min: Time.now.iso8601))
+end
 
 idCalendar = 0
 puts "No upcoming events found" if response.empty?
@@ -88,14 +88,12 @@ response.each do |calendar|
   idCalendar = idCalendar + 1
 end
 strevents= strevents+ "]"
-
-puts "============================="
-puts "============================="
-puts "============================="
 File.open("./desain ikhwan/data/jadwal.json", 'w') {
  |file| file.write(strevents) 
 }
 File.open("./desain ikhwan/data/calendars.txt", 'w') {
     |file| file.write(strcalendars)
   }
+
+puts "SAVED"
 
