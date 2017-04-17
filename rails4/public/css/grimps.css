@@ -1,0 +1,450 @@
+/****************************
+ GENERAL
+****************************/
+
+.grimps-header {
+    height: 64px;
+}
+
+.grimps-content {
+    padding: 10px 20px 10px 20px;
+    font-size: 16px !important;
+}
+
+.email {
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#notif {
+    cursor: pointer;
+    font-size: 32px;
+}
+
+.hidden {
+    display: none;
+}
+
+.mdl-menu__item img {
+    height: 65px;
+    width: 65px;
+    margin-left: -15px;
+}
+
+.mdl-menu__item span {
+    padding: 10px;
+}
+
+.mdl-menu__item {
+    display: flex;
+}
+
+.error-span {
+    color: red;
+}
+
+.error {
+    margin-top: -20px;
+    height: 20px;
+}
+
+.login-form {
+    border: solid 2px #8493C7;
+    border-radius: 5px;
+    padding: 30px 20px 30px 20px;
+    margin: 10px 0;
+    opacity: 0;
+    position: relative;
+}
+
+/****************************
+ END OF GENERAL
+****************************/
+
+/****************************
+ COLORS
+****************************/
+
+.grimps-blue {
+    background-color: #04192F;
+}
+
+.grimps-gold {
+    background-color: #D79828;
+}
+
+.grimps-violet {
+    background-color: #8493C7;
+}
+
+.grimps-plain {
+    background-color: #FFF;
+}
+
+.grimps-selected {
+    background-color: #2B3B4E;
+}
+
+.grimps-plain-selected {
+    background-color: #FFF9EE;
+}
+
+.grimps-white {
+    background-color: #FFF;
+}
+
+/****************************
+ END OF COLORS
+****************************/
+
+/****************************
+ TEXT/FONTS
+****************************/
+.grimps-text-alcu {
+    font-family: "Lato";
+}
+
+.grimps-text-alcu-big {
+    font-family: "Lato";
+    font-size: 24px;
+}
+
+.grimps-text-black {
+    color: #423E3E;
+}
+
+.grimps-text-lato {
+    font-family: "Lato";
+}
+
+.grimps-text-lato-medium {
+    font-family: "Lato";
+    font-size: 18px;
+}
+
+.grimps-text-title {
+    vertical-align: middle;
+    font-size: 32px !important;
+}
+
+.grimps-text-view {
+    vertical-align: middle;
+    font-size: 20px !important;
+    margin-left: 40px;
+    padding: 10px;
+}
+
+.grimps-text-plain {
+    color: #FEF6E2 !important;
+}
+
+.grimps-text-big {
+    font-size: 24px;
+}
+
+.grimps-text-red {
+    color: red !important;
+}
+
+.grimps-text-calendar-option {
+    margin-left: 40px;
+}
+/****************************
+ END OF TEXT-FONTS
+****************************/
+
+/***************************
+ DASHBOARD
+****************************/
+.mdl-navigation__link {
+    font-size: 20px;
+}
+
+hr {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.demo-navigation {
+    width: 100%;
+}
+
+/***************************
+ END OF DASHBOARD
+****************************/
+
+/***************************
+ VERIFICATION
+****************************/
+.verification-header {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    justify-content: space-between;
+}
+
+.log-header {
+    display: flex;
+    align-items: center;
+    padding: 0 25px;
+    font-size: 10px;
+    justify-content: space-between;
+}
+
+.verification-img {
+    width: 30px;
+    height: 30px;
+}
+
+.verification-log-img {
+    width: 25px;
+    height: 25px;
+    margin-right: 10px;
+}
+
+.verification-submit {
+    padding-right: 20px;
+    display: flex;
+    margin-top: 50px;
+    justify-content: flex-end;
+}
+
+.verification-selected {
+    background-color: #FFF9EE;
+}
+
+.mdl-cell {
+    height: calc(100vh - 64px) !important;
+}
+
+label[for="search"]:after {
+    background-color: white;
+}
+/***************************
+ END OF VERIFICATION
+****************************/
+
+/***************************
+ DEFENSE SCHEDULE
+****************************/
+.exam-description-card-mhs {
+    width: 50%;
+    min-height: 525px;
+    background-color: white;
+    margin: 30px auto;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.exam-description-card-dsn {
+    width: 100%;
+    min-height: 825px;
+    background-color: white;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.exam-desc-cell-8 {
+    min-height: 525px;
+}
+
+.exam-date {
+    height: 70px;
+    background-color: #8393ca;
+    padding: 15px;
+}
+
+.exam-date h3 {
+    color: #fef6e0;
+    margin-top: 5px;
+    letter-spacing: 2px;
+}
+
+.exam-description {
+    padding: 15px 0px 15px 50px;
+}
+
+.exam-desc-cell-4 {
+    min-height: inherit;
+    background-color: #03192f;
+}
+
+.exam-date-title {
+    height: 50px;
+    background-color: black;
+    color: white;
+    padding-top: 30px;
+    padding-left: 20px;
+    font-size: 28px;
+}
+
+.date-list .mdl-navigation__link {
+    padding-left: 25px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.demo-layout .date-list{
+    display: inline-block;
+    width: 93%;
+    margin: 15px 0;
+}
+.date-list a{
+    cursor: pointer;
+    color: whitesmoke;
+}
+.date-list .selected {
+    background-color: lightgrey;
+    color: black;
+}
+
+.center-desc {
+    margin-top: 20px;
+}
+/***************************
+ END OF EXAM SCHEDULE
+****************************/
+
+/***************************
+ FIRST PAGE
+****************************/
+
+.header-title {
+    margin: 0 auto;
+}
+
+.login-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.login-button {
+    height: 200px;
+    width: 200px;
+    margin: 10px 75px;
+    background-color: #03192f;
+    color: #d79a08;
+    border-radius: 50%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+    text-align: center;
+    cursor: pointer;
+    -webkit-transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+    -moz-transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+    transition: box-shadow 0.5s, background-color 0.5s, color 0.5s;
+    position: relative;
+    top: 50px;
+    opacity: 0;
+}
+
+.login-button:hover {
+    background-color: #d79a08;
+    color: #03192f;
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+
+.login-button span {
+    vertical-align: -100px;
+}
+
+.first-body {
+    overflow: hidden;
+}
+
+.logo-first-page img {
+    display: block;
+    margin: 0 auto;
+    width: 250px;
+    height: 250px;
+    margin-top: -20px;
+}
+
+.logo-first-page h1 {
+    text-align: center;
+    margin-top: -5px;
+    margin-bottom: -90px;
+}
+
+/***************************
+ END OF FIRST PAGE
+****************************/
+
+/***************************
+ NOTES
+****************************/
+
+.btn-confirm {
+    background-color: #00cc00;
+    -webkit-transition: background-color 0.5s, color 0.5s;
+    -moz-transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.btn-confirm:hover {
+    background-color: #33ff33;
+    cursor: pointer;
+}
+
+.btn-reject {
+    background-color: red;
+    -webkit-transition: background-color 0.5s, color 0.5s;
+    -moz-transition: background-color 0.5s, color 0.5s;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.btn-reject:hover {
+    background-color: #ff3333;
+}
+
+.confirm-buttons button {
+    color: white;
+}
+
+.confirm-buttons button:hover {
+    color: darkslategrey;
+}
+
+.td-status {
+    min-width: 220px;
+}
+
+.undo {
+    cursor: pointer;
+}
+
+.status-close {
+    text-align: right;
+    cursor: pointer;
+    margin-right: -10px;
+    margin-top: -30px;
+}
+/***************************
+ END OF NOTES
+****************************/
+
+.registration {
+    width: 100%;
+    table-layout: fixed;
+}
+
+.registration td {
+    padding: 0;
+}
+
+.dhx_month_head {
+    background-color: #FFF3A1 !important;
+    border-bottom: solid 1px #CECECE;
+}
+
+.dhx_month_body:hover {
+    cursor: pointer;
+    background-color: #FFF3A1 !important;
+}
+
+.dhx_cal_event_line_start:hover {
+    background-color: #FEF6E2 !important;
+}
+
+.pdf-preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
