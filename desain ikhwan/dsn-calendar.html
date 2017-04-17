@@ -103,59 +103,78 @@ limitations under the License
         }
 
         function init() {
-            scheduler.config.multi_day = true;
-            var types = [
-              { key: "personal", label: "Personal" },
-              { key: "all_schedules", label: "All_schedules" },
-              { key: "myschedule", label: "Myschedule" }
-            ];
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", "./data/calendars.txt" , false);
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        var allText = rawFile.responseText;
+                        var calendars = allText.split(',');
+                        calendars.pop();
 
-            // default values for filters
-            var filters = {
-              personal: true,
-              all_schedules: true,
-              myschedule: true
-            };
+                        scheduler.config.multi_day = true;
+                        var types = [];
+                        for (var i=0; i<calendars.length; i++) {
+                            types[i] = {"key": calendars[i], "label": calendars[i]};
+                        }
+                        // default values for filters
+                        var filters = [];
+                        for (var i=0; i<calendars.length; i++) {
+                            filters[calendars[i]] = true;
+                        }
 
-            var filter_inputs = document.getElementById("calendar-option").getElementsByTagName("input");
-            for (var i=0; i<filter_inputs.length; i++) {
-              var filter_input = filter_inputs[i];
+                        //checkboxes
+                        var strcheckboxes ="<br>\n"+
+                                            "<div class=\"grimps-text-view\">Calendars</div>\n"+
+                                            "<div class=\"grimps-text-calendar-option\">\n";
 
-              // set initial input value based on filters settings
-              filter_input.checked = filters[filter_input.name];
+                        for (var i=0; i<calendars.length; i++) {
+                            strcheckboxes = strcheckboxes + "<p>\n"+
+                                        "<input type=\"checkbox\" onchange=\"calenderfilter()\" name = \""+calendars[i]+
+                                        "\" class=\"filled-in\" id=\""+calendars[i]+"\"/>\n"+
+                                        "<label for=\"filled-in-box\">"+calendars[i]+"</label>\n"+
+                                        "</p>\n";
+                        }
+                        strcheckboxes = strcheckboxes + "</div>\n</div>";
+                        document.getElementById("calendar-option").innerHTML =strcheckboxes;
 
-              // attach event handler to update filters object and refresh view (so filters will be applied)
-              filter_input.onchange = function() {
-                filters[this.name] = !!this.checked;
-                scheduler.updateView();
-              }
-            }
+                        var filter_inputs = document.getElementById("calendar-option").getElementsByTagName("input");
+                        for (var i=0; i<filter_inputs.length; i++) {
 
-            // here we are using single function for all filters but we can have different logic for each view
-            scheduler.filter_month = scheduler.filter_day = scheduler.filter_week = function(id, event) {
-              // display event only if its type is set to true in filters obj
-              // or it was not defined yet - for newly created event
-              if (filters[event.type] || event.type==scheduler.undefined) {
-                return true;
-              }
+                          var filter_input = filter_inputs[i];
 
-              // default, do not display event
-              return false;
-            };
+                          // set initial input value based on filters settings
+                          filter_input.checked = filters[filter_input.name];
 
-            scheduler.locale.labels.section_text = 'Text';
-            scheduler.locale.labels.section_checkbox = 'Checkbox';
-            scheduler.locale.labels.section_radiobutton = 'Radiobutton';
-            scheduler.locale.labels.section_select = 'Select';
-            scheduler.locale.labels.section_template = 'Template';
+                          // attach event handler to update filters object and refresh view (so filters will be applied)
+                          
+                          filter_input.onchange = function() {
+                            filters[this.name] = !!this.checked;
+                            scheduler.updateView();
+                          }
+                        } 
 
-            scheduler.config.lightbox.sections = [
-                { name: "text", height: 50, map_to: "text", type: "textarea", focus: true },
-                { name:"type", height:23, type:"select", options: types, default_value: "appointment", map_to:"type" },
-                { name: "time", height: 72, type: "time", map_to: "auto"}
-            ];
+                        
+                        // here we are using single function for all filters but we can have different logic for each view
+                        scheduler.filter_month = scheduler.filter_day = scheduler.filter_week = function(id, event) {
+                          // display event only if its type is set to true in filters obj
+                          // or it was not defined yet - for newly created event
+                          //window.alert(event.type+": "+filters[event.type]+"\n");
+                          if (filters[event.type] || event.type==scheduler.undefined) {
+                            return true;
+                          }
+                          // default, do not display event
+                          return false;
+                        };
 
-            scheduler.config.full_day = true;
+                        scheduler.locale.labels.section_text = 'Text';
+                        scheduler.locale.labels.section_checkbox = 'Checkbox';
+                        scheduler.locale.labels.section_radiobutton = 'Radiobutton';
+                        scheduler.locale.labels.section_select = 'Select';
+                        scheduler.locale.labels.section_template = 'Template';
 
             scheduler.config.xml_date = "%Y-%m-%d %H:%i";
             scheduler.init("scheduler_here",new Date(),"month");
@@ -171,6 +190,7 @@ limitations under the License
             scheduler.parse(readFile("./data/myschedule.xml"));*/
             console.log(readTextFile("./data/jadwal.json"));
             scheduler.parse(readTextFile("./data/jadwal.json"),"json");
+
 
         }
     </script>
@@ -300,32 +320,6 @@ limitations under the License
               <br>
                 <div class="grimps-text-view">Calendars</div>
                 <div class="grimps-text-calendar-option">
-                  <p>
-                    <input type="checkbox" class="filled-in" id="Seminar KP"/>
-                    <label for="filled-in-box">Seminar KP</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" class="filled-in" id="Seminar TA I"/>
-                    <label for="filled-in-box">Seminar TA I</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" class="filled-in" id="Seminar TA II"/>
-                    <label for="filled-in-box">Seminar TA II</label>
-                  </p>
-				  <p>
-                    <input type="checkbox" class="filled-in" id="Sidang TA"/>
-                    <label for="filled-in-box">Sidang TA</label>
-                    <input type="checkbox" onchange="calenderfilter()" name = "personal" class="filled-in" id="personal"/>
-                    <label for="filled-in-box">Personal</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" onchange="calenderfilter()" name = "all_schedules"  class="filled-in" id="all_schedules"/>
-                    <label for="filled-in-box">All Schedules</label>
-                  </p>
-                  <p>
-                    <input type="checkbox" onchange="calenderfilter()" name = "myschedule"  class="filled-in" id="myschedule"/>
-                    <label for="filled-in-box">My Schedule</label>
-                  </p>
                 </div>
               </div>
               <!--<script type="text/javascript">
