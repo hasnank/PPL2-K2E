@@ -414,7 +414,19 @@ Genetic.run(100)
 Genetic.sort()
 M = Genetic.convertToMatriks(Genetic.best())
 for i in range(M.row):
-	for j in range(M.col):
+	for j in range(6,18,1):
+		print (M.matriks[i][j], end='')
+	print()
+	for j in range(30,42,1):
+		print (M.matriks[i][j], end='')
+	print()
+	for j in range(54,66,1):
+		print (M.matriks[i][j], end='')
+	print()
+	for j in range(78,90,1):
+		print (M.matriks[i][j], end='')
+	print()
+	for j in range(102,114,1):
 		print (M.matriks[i][j], end='')
 	print()
 	print()

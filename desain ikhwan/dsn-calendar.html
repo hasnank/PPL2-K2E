@@ -176,22 +176,21 @@ limitations under the License
                         scheduler.locale.labels.section_select = 'Select';
                         scheduler.locale.labels.section_template = 'Template';
 
-                        scheduler.config.lightbox.sections = [
-                            { name: "text", height: 50, map_to: "text", type: "textarea", focus: true },
-                            //{ name:"type", height:23, type:"select", options: types, default_value: calendars[0], map_to:"type" },
-                            { name: "time", height: 72, type: "time", map_to: "auto"}
-                        ];
+            scheduler.config.xml_date = "%Y-%m-%d %H:%i";
+            scheduler.init("scheduler_here",new Date(),"month");
+            scheduler.load("./data/personal.xml", function() {
+            });
+            scheduler.load("./data/jadwal.json", "json");
+			
+			
+			
+            /*window.alert(readFile("./data/personal.xml"));
+            scheduler.parse(readFile("./data/personal.xml"));
+            scheduler.parse(readFile("./data/all_schedules.xml"));
+            scheduler.parse(readFile("./data/myschedule.xml"));*/
+            console.log(readTextFile("./data/jadwal.json"));
+            scheduler.parse(readTextFile("./data/jadwal.json"),"json");
 
-                        scheduler.config.full_day = true;
-
-                        scheduler.config.xml_date = "%Y-%m-%d %H:%i";
-                        scheduler.init("scheduler_here",new Date(),"month");
-                         scheduler.load("./data/jadwal.json", "json");
-                        scheduler.parse(readTextFile("./data/jadwal.json"),"json");
-                    }
-                }
-            }
-            rawFile.send(null);
 
         }
     </script>
