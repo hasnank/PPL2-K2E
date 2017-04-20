@@ -72,9 +72,10 @@ response.each do |calendar|
   
   #Iterate a calendar
   calendar.items.each do |event|
-    strevents= strevents+ "{ text:"+"\"#{event.summary}\","
-    startDate = Date.strptime("#{event.start.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %T")
-    endDate = Date.strptime("#{event.end.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %T")
+  	strevents = strevents + "{ id:"+"\"#{event.id}\","
+    strevents= strevents+ "text:"+"\"#{event.summary}\","
+    startDate = Date.strptime("#{event.start.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %H:%M")
+    endDate = Date.strptime("#{event.end.date_time}", '%FT%T%:z').strftime("%Y-%m-%d %H:%M")
     strevents= strevents+ "start_date :"+"\""+startDate+"\","
     strevents= strevents+ "end_date :"+"\""+endDate +"\","
     strevents= strevents+ "type :"+"\""+displayName+"\""
