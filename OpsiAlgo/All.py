@@ -400,9 +400,25 @@ class Ruangan:
     def __init__(self, idruangan, nama, jam_awal, jam_akhir, hari):
         self.idruangan = idruangan
         self.nama = nama
-        self.jam_awal = jam_awal
-        self.jam_akhir = jam_akhir
-        self.hari = hari
+        self.jam_awal = jam_awal    #hapus
+        self.jam_akhir = jam_akhir	#hapus
+        self.hari = hari			#hapus
+		
+		
+class Mahasiswa:
+	def __init__(self, user_id, email, dosbing1, dosbing2, dosji1, dosji2):
+		self.user_id = user_id
+		self.email = email
+		self.dosen_pembimbing_1 = dosbing1
+		self.dosen_pembimbing_2 = dosbing2
+		self.dosen_penguji_1 = dosji1
+		self.dosen_penguji_2 = dosji2
+	
+	
+class Dosen:
+	def __init__(self, user_id, email):
+		self.user_id = user_id
+		self.email = email
 
 		
 Jadwal('SourcePythonTubesAIRadit/Testcases/m1_abnormal.txt')		
@@ -414,19 +430,19 @@ Genetic.run(100)
 Genetic.sort()
 M = Genetic.convertToMatriks(Genetic.best())
 for i in range(M.row):
-	for j in range(6,18,1):
+	for j in range(7,18,1):
 		print (M.matriks[i][j], end='')
 	print()
-	for j in range(30,42,1):
+	for j in range(31,42,1):
 		print (M.matriks[i][j], end='')
 	print()
-	for j in range(54,66,1):
+	for j in range(55,66,1):
 		print (M.matriks[i][j], end='')
 	print()
-	for j in range(78,90,1):
+	for j in range(79,90,1):
 		print (M.matriks[i][j], end='')
 	print()
-	for j in range(102,114,1):
+	for j in range(10,114,1):
 		print (M.matriks[i][j], end='')
 	print()
 	print()
