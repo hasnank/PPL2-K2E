@@ -406,20 +406,25 @@ class Ruangan:
 		
 		
 class Mahasiswa:
-	def __init__(self, user_id, email, dosbing1, dosbing2, dosji1, dosji2):
+	def __init__(self, event, user_id, email, dosen):
+		self.event = event
 		self.user_id = user_id
 		self.email = email
-		self.dosen_pembimbing_1 = dosbing1
-		self.dosen_pembimbing_2 = dosbing2
-		self.dosen_penguji_1 = dosji1
-		self.dosen_penguji_2 = dosji2
+		self.dosen = dosen
 	
 	
 class Dosen:
-	def __init__(self, user_id, email):
+	def __init__(self, event, user_id, email):
+		self.event = event
 		self.user_id = user_id
 		self.email = email
 
+		
+class Event:
+	def __init__(self, name, date_start, date_end):
+		self.name = name
+		self.date_start = date_start
+		self.date_end = date_end
 		
 Jadwal('SourcePythonTubesAIRadit/Testcases/m1_abnormal.txt')		
 Assign()

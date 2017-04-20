@@ -7,10 +7,7 @@ user : {
 		date_start : ' 232131231231', date_end : '342323343' } ],
    user_id : '3242342342'
    email : 'haha@hehe.com',
-   id_dosen_pembimbing_1 : '213213'
-   id_dosen_pembimbing_2 : '213214'
-   id_dosen_penguji_1 : '213314'
-   id_dosen_penguji_2 : '213414'
+   id_dosen : [{87614873}, {8731}]
 }
 
 dosen : {
